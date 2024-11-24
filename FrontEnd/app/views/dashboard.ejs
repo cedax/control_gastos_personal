@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Financiero</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    style="margin-right: 8px;">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                Dashboard Financiero
+            </a>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <!-- Stats Cards -->
+        <div class="stats-container">
+            <div class="w-100 stat-card debit animate__animated animate__fadeIn">
+                <div class="stat-label">Disponible</div>
+                <div class="stat-value" id="totalDisponible">$0.00</div>
+            </div>
+            <div class="stat-card loans animate__animated animate__fadeIn">
+                <div class="stat-label">Préstamos</div>
+                <div class="stat-value" id="totalLoans">$0.00</div>
+            </div>
+            <div class="stat-card credit animate__animated animate__fadeIn">
+                <div class="stat-label">Créditos</div>
+                <div class="stat-value" id="totalCredit">$0.00</div>
+            </div>
+            <div class="stat-card pending animate__animated animate__fadeIn">
+                <div class="stat-label">Separado</div>
+                <div class="stat-value" id="totalSeparated">$0.00</div>
+            </div>
+            <div class="stat-card debit animate__animated animate__fadeIn">
+                <div class="stat-label">Débito</div>
+                <div class="stat-value" id="totalDebit">$0.00</div>
+            </div>
+        </div>
+
+        <!-- Tables -->
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="titleHeader">
+                    <h2>Debito</h2>
+                    <button containerToggleTableID="containerDebitTable" class="btn btn-primary btnToggleTable"></button>
+                </div>
+                <div class="table-container" id="containerDebitTable">
+                    <table class="table" id="debitTable">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Monto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="titleHeader">
+                    <h2>Prestamos</h2>
+                    <button containerToggleTableID="containerLoansTable" class="btn btn-primary btnToggleTable"></button>
+                </div>
+                <div class="table-container" id="containerLoansTable">
+                    <table class="table" id="loansTable">
+                        <thead>
+                            <tr>
+                                <th>Persona</th>
+                                <th>Monto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="titleHeader">
+                    <h2>Credito</h2>
+                    <button containerToggleTableID="containerCreditTable" class="btn btn-primary btnToggleTable"></button>
+                </div>
+                <div class="table-container" id="containerCreditTable">
+                    <table class="table" id="creditTable">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Monto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="titleHeader">
+                    <h2>Separado</h2>
+                    <button containerToggleTableID="containerSeparatedTable" class="btn btn-primary btnToggleTable"></button>
+                </div>
+                <div class="table-container" id="containerSeparatedTable">
+                    <table class="table" id="separatedTable">
+                        <thead>
+                            <tr>
+                                <th>Cuenta</th>
+                                <th>Monto</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="chart-container">
+            <h6 class="stat-label mb-4">Balance General</h6>
+            <canvas id="balanceChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/financialManager.browser.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+
+</html>

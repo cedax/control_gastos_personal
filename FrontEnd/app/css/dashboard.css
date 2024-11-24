@@ -1,0 +1,324 @@
+/* Variables para light/dark mode */
+:root {
+    /* Light mode (default) */
+    --ios-background: #f2f2f7;
+    --ios-card: #ffffff;
+    --ios-primary: #007AFF;
+    --ios-success: #34C759;
+    --ios-warning: #FF9500;
+    --ios-danger: #FF3B30;
+    --ios-text: #1c1c1e;
+    --ios-secondary-text: #6c6c6e;
+    --ios-border: rgba(0, 0, 0, 0.1);
+    --ios-card-shadow: rgba(0, 0, 0, 0.05);
+    --ios-table-header: rgba(0, 0, 0, 0.02);
+    --ios-table-border: rgba(0, 0, 0, 0.05);
+    --ios-chart-grid: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ios-background: #000000;
+        --ios-card: #1c1c1e;
+        --ios-primary: #0A84FF;
+        --ios-success: #30D158;
+        --ios-warning: #FF9F0A;
+        --ios-danger: #FF453A;
+        --ios-text: #ffffff;
+        --ios-secondary-text: #8e8e93;
+        --ios-border: rgba(255, 255, 255, 0.1);
+        --ios-card-shadow: rgba(0, 0, 0, 0.2);
+        --ios-table-header: rgba(255, 255, 255, 0.05);
+        --ios-table-border: rgba(255, 255, 255, 0.05);
+        --ios-chart-grid: rgba(255, 255, 255, 0.05);
+        --ios-background-navbar: rgba(28, 28, 30, 0.8);
+    }
+}
+
+#balanceChart {
+    color: var(--ios-text);
+}
+
+body {
+    background-color: var(--ios-background);
+    color: var(--ios-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+    padding-bottom: 2rem;
+}
+
+.navbar {
+    background: var(--ios-background-navbar);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--ios-border);
+}
+
+.navbar-brand {
+    color: var(--ios-text);
+    font-weight: 600;
+}
+
+.ios-card {
+    background: var(--ios-card);
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--ios-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+}
+
+.stat-card.debit::after {
+    background: var(--ios-primary);
+}
+
+.stat-card.loans::after {
+    background: var(--ios-success);
+}
+
+.stat-card.credit::after {
+    background: var(--ios-warning);
+}
+
+.stat-card.pending::after {
+    background: var(--ios-danger);
+}
+
+.stat-label {
+    color: var(--ios-secondary-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--ios-text);
+}
+
+.chart-container {
+    background: var(--ios-card);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.table-container {
+    background: var(--ios-card);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: var(--ios-table-header);
+    color: var(--ios-secondary-text);
+    border-bottom: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr td {
+    transition: background 0.3s ease;
+    background: var(--ios-card);
+    color: var(--ios-text);
+}
+
+.table td {
+    border: none;
+    padding: 1rem 1.5rem;
+    vertical-align: middle;
+}
+
+.table tr:not(:last-child) td {
+    border-bottom: 1px solid var(--ios-table-border);
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: var(--ios-primary);
+    border: none;
+}
+
+.btn-danger {
+    background: var(--ios-danger);
+    border: none;
+}
+
+/* Responsive */
+/* Ajustes generales del contenedor */
+.container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Hacer los stats cards responsive */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        /* Una columna en móvil */
+        gap: 0.75rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .chart-container {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .table-container {
+        margin: 0 -1rem;
+        /* Extender las tablas al borde en móvil */
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .table td,
+    .table th {
+        padding: 0.75rem 1rem;
+        /* Reducir el padding en móvil */
+    }
+
+    /* Hacer las tablas scrollables horizontalmente */
+    .table-responsive {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Ajustes específicos para pantallas muy pequeñas */
+@media (max-width: 375px) {
+    .stat-value {
+        font-size: 1.5rem;
+        /* Texto más pequeño en pantallas muy pequeñas */
+    }
+
+    .btn {
+        padding: 0.375rem 0.75rem;
+        /* Botones más pequeños */
+        font-size: 0.875rem;
+    }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* Dos columnas en tablet */
+    }
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que los elementos se ajusten a múltiples líneas si es necesario */
+    gap: 16px;
+    /* Espacio entre tarjetas */
+}
+
+.stat-card {
+    flex: 1;
+    /* Cada tarjeta ocupa el mismo espacio disponible */
+    min-width: 200px;
+    /* Un ancho mínimo para tarjetas más pequeñas */
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:first-child {
+    flex: 0 0 100%;
+    /* Ocupa el 100% del ancho del contenedor */
+}
+
+/* Estilo para la animación de contraer y expandir */
+.table-container {
+    overflow: hidden;
+    /* Oculta contenido que excede los límites */
+    transition: max-height 0.5s ease-out;
+    max-height: 500px;
+    /* Altura inicial suficiente para mostrar la tabla */
+}
+
+.table-container.hidden {
+    max-height: 0;
+    /* Oculta la tabla */
+}
+
+.titleHeader h2 {
+    display: inline;
+}
+
+.titleHeader {
+    display: flex;
+    align-items: center;
+}
+
+.titleHeader button {
+    margin-left: 1rem;
+}
+
+.btnToggleTable {
+    width: 2rem;
+    height: 1.8rem;
+    padding: 0;
+}

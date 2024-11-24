@@ -1,0 +1,363 @@
+{
+  "info": {
+    "name": "Finance Manager API",
+    "description": "Collection for testing the Finance Manager API endpoints with type-safe examples",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Debit Accounts",
+      "item": [
+        {
+          "name": "Get All Debit Accounts",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/debit"
+          }
+        },
+        {
+          "name": "Add Debit Account",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/debit",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "Cuenta Principal",
+                "amount": 5000.50
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Debit Account",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/debit/Cuenta Principal",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "amount": 6000.75
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Debit Account",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/debit/Cuenta Principal"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loans",
+      "item": [
+        {
+          "name": "Get All Loans",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/loans"
+          }
+        },
+        {
+          "name": "Add Loan",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/loans",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "person": "Juan Pérez",
+                "amount": 2500.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Loan",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/loans/Juan Pérez",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "amount": 2000.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Loan",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/loans/Juan Pérez"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Credit Accounts",
+      "item": [
+        {
+          "name": "Get All Credit Accounts",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/credit"
+          }
+        },
+        {
+          "name": "Add Credit Account",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/credit",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "Tarjeta BBVA",
+                "debt": 15000.00,
+                "monthlyPayment": 1500.00,
+                "creditLimit": 50000.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Credit Account",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/credit/Tarjeta BBVA",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "debt": 14000.00,
+                "monthlyPayment": 1500.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Credit Account",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/credit/Tarjeta BBVA"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Installment Payments",
+      "item": [
+        {
+          "name": "Get All Installment Payments",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/installments"
+          }
+        },
+        {
+          "name": "Add Installment Payment",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/installments",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "concept": "Laptop Nueva",
+                "amount": 24000.00,
+                "startDate": "2024-01-01",
+                "endDate": "2024-12-31",
+                "totalPayments": 12
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Current Installment Payments",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/installments/current"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Separated Items",
+      "item": [
+        {
+          "name": "Get All Separated Items",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/separated"
+          }
+        },
+        {
+          "name": "Add Separated Item",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/separated",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "concept": "Fondo Vacaciones",
+                "amount": 10000.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Separated Item",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/separated/Fondo Vacaciones",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "amount": 12000.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Separated Item",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/separated/Fondo Vacaciones"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Separated Subcategories",
+      "item": [
+        {
+          "name": "Get Subcategories",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/separated/Fondo Vacaciones/subcategories"
+          }
+        },
+        {
+          "name": "Add Subcategory",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/separated/Fondo Vacaciones/subcategories",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "name": "Hotel",
+                "amount": 5000.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Update Subcategory",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/separated/Fondo Vacaciones/subcategories/Hotel",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": {
+                "amount": 6000.00
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete Subcategory",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/separated/Fondo Vacaciones/subcategories/Hotel"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Summary",
+      "item": [
+        {
+          "name": "Get Financial Summary",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/summary"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api/finances",
+      "type": "string"
+    }
+  ]
+}
